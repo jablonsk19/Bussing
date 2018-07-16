@@ -18,10 +18,11 @@ def commandLineRun(args):
                                      "not contain any more .exp files than the ones used to run this tool.")
     parser.add_argument("main", help="The file (in the directory 'path') that plots total mass fraction liquid against "
                                      "temperature.")
+    parser.add_argument("homog_dist", help= "The distance over which to homogenize, normally (1/2)*(SDAS)")
     ns = parser.parse_args(args)
-    runMain(ns.path, ns.main)
+    runMain(ns.path, ns.main, ns.homog_dist)
 
-def runMain(filePath, mainFile):
+def runMain(filePath, mainFile, homog_dist):
     """read in all exp files in specified directory and produce outputs to the user."""
     dataList = []
     totalLiq = ""

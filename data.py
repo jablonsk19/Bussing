@@ -6,7 +6,7 @@ class ExpData:
     def __init__(self, filename):
         self.wtFrLiq = []
         self.temperature = []
-        self.element = "UNKNOWN"
+        self.element = "NOT AN ELEMENT"
         self.readFile(filename)
         pass
 
@@ -25,7 +25,7 @@ class ExpData:
         read = False
         for line in contents:
             # Grab element, if possible
-            if "XTEXT" in line:
+            if "XTEXT  W(" in line:
                 self.element = line[line.find(',') + 1 : line.find(')')]
             elif line.endswith("M"):
                 read = True
@@ -35,3 +35,12 @@ class ExpData:
                 line = line.split()
                 self.wtFrLiq.append(float(line[0]))
                 self.temperature.append(float(line[1]))
+
+
+def normalize(data):
+    """Return a normalized list (Feature scaling) based on https://en.wikipedia.org/wiki/Feature_scaling"""
+    large = max(data)
+    small = min(data)
+
+    return [(x - small) / (large - small) for x in data]
+
