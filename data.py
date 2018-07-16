@@ -1,6 +1,3 @@
-import numpy as np
-from copy import copy
-
 
 class ExpData:
     def __init__(self, filename):
