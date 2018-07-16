@@ -25,7 +25,8 @@ def commandLineRun(args):
     parser.add_argument("homog_dist", help= "The distance over which to homogenize, normally (1/2)*(SDAS)")
 
     ns = parser.parse_args(args)
-    runMain(ns.path, ns.main, ns.homog_dist)
+    # TODO add check to find if output folder already exists
+    runMain(ns.path, ns.main, float(ns.homog_dist))
 
 
 
@@ -74,6 +75,15 @@ def runMain(filePath, mainFile, homog_dist):
     liqData.wtFrLiq = [1 - x for x in liqData.wtFrLiq]
 
     # ---=== Output data ===---
+
+    # output Matrix.dat (validated against previous versions' outputs)
+    # TODO maybe add an option to name output folder
+    if not os.path.isdir("./Bussing Outputs"):
+        os.mkdir("./Bussing Outputs")
+    with open("./Bussing Outputs/Matrix.dat", "w") as f:
+        for num in liqData.wtFrLiq:
+            f.write(str(num*homog_dist) + "\n")
+
 
     # TODO replace these print statements with the actual functionality of the program
     print("\n\nAFTER\n\n")
