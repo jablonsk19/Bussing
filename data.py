@@ -2,6 +2,7 @@
 class ExpData:
     def __init__(self, filename):
         self.wtFrLiq = []
+        self.wtFrSol = [] # to be initialized later during computation
         self.temperature = []
         self.element = "NOT AN ELEMENT"
         self.readFile(filename)
@@ -23,7 +24,7 @@ class ExpData:
         for line in contents:
             # Grab element, if possible
             if "XTEXT  W(" in line:
-                self.element = line[line.find(',') + 1 : line.find(')')]
+                self.element = line[line.find(',') + 1 : line.find(')')].capitalize()
             elif line.endswith("M"):
                 read = True
             elif line.startswith("BLOCKEND"):
