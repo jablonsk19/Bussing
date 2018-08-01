@@ -76,19 +76,17 @@ def runMain(filePath, mainFile, homog_dist):
     # Implemented eq 1 and eq 2 from https://link.springer.com/article/10.1007/s11665-016-2451-3
 
     for elem in dataList:
-        overallChem = 0
-        incFrLiq = 0
-        lastStartPoint = 0
+        incFrSol = 0
+        startPoint = 0
         lastFracLiq = 0
         for eLiq, tLiq in zip(elem.wtFrLiq, liqData.wtFrLiq):
             if(tLiq == 1.0):
-                overallChem = eLiq
-                lastFracLiq = tLiq
+                startPoint = eLiq
             else:
-                incFrLiq = lastFracLiq - tLiq
-                lastFracLiq = tLiq
-                elem.wtFrSol.append((overallChem - tLiq * eLiq - lastStartPoint) / incFrLiq)
-                lastStartPoint = overallChem - tLiq * eLiq
+                incFrSol = lastFracLiq - tLiq
+                elem.wtFrSol.append((startPoint - tLiq * eLiq ) / incFrSol)
+                startPoint = tLiq * eLiq
+            lastFracLiq = tLiq
 
 
     # ---=== Output data ===---
