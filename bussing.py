@@ -88,6 +88,9 @@ def runMain(filePath, mainFile, homog_dist):
                 startPoint = tLiq * eLiq
             lastFracLiq = tLiq
 
+        # Duplicate item at position 0 to have some value for pre-solidification
+        elem.wtFrSol.insert(0, elem.wtFrSol[0])
+
 
     # ---=== Output data ===---
 
@@ -106,14 +109,17 @@ def runMain(filePath, mainFile, homog_dist):
                 f.write(str(num*100) + "\n")
 
     # Sanity check:
-    sumLists = []
-    for elem in dataList:
-        for i, num in enumerate(elem.wtFrSol):
-            try:
-                sumLists[i] += num
-            except IndexError:
-                sumLists.append(num)
-    print(sumLists)
+    # sumLists = []
+    # for elem in dataList:
+    #     for i, num in enumerate(elem.wtFrSol):
+    #         try:
+    #             sumLists[i] += num
+    #         except IndexError:
+    #             sumLists.append(num)
+    # print(sumLists)
+
+    print("Outputs written (" + str(len(liqData.temperature)) + " lines each).  ")
+    print("The solidus is " + str(liqData.temperature[1]) + ".")
 
 
 
