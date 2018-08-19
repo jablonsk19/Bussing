@@ -4,7 +4,7 @@ import sys
 import argparse
 
 def commandLineRun(args):
-    """Perform a command-line version of Bussing.
+    """Perform a command-line version of HTA.
 
     Arguments:
         args -- all command-line arguments (including the name of the program itself)
@@ -17,7 +17,7 @@ def commandLineRun(args):
                                      "multiple files.  Matrix.dat contains the distance at which each data point "
                                      "is calculated.  All other files contain their instantaneous percent solid by "
                                      "weight relative to the distance given by the SDAS.  ",
-                                     prog='bussing')
+                                     prog='Hta')
     parser.add_argument("path", help="The path of the folder conaining necessary .exp files.  The folder must"
                                      "not contain any more .exp files than the ones used to run this tool.")
     parser.add_argument("main", help="The file (in the directory 'path') that plots total mass fraction liquid against "
@@ -96,15 +96,15 @@ def runMain(filePath, mainFile, homog_dist):
 
     # output Matrix.dat (validated against previous versions' outputs)
     # TODO maybe add an option to name output folder
-    if not os.path.isdir("./Bussing Outputs"):
-        os.mkdir("./Bussing Outputs")
-    with open("./Bussing Outputs/Matrix.dat", "w") as f:
+    if not os.path.isdir("./HTA Outputs"):
+        os.mkdir("./HTA Outputs")
+    with open("./HTA Outputs/Matrix.dat", "w") as f:
         for num in liqData.wtFrLiq:
             f.write(str(num*homog_dist) + "\n")
 
     # output element-specific data files (percent solid against distance provided in Matrix.dat)
     for elem in dataList:
-        with open("./Bussing Outputs/" + elem.element + "-matrix.txt", "w") as f:
+        with open("./HTA Outputs/" + elem.element + "-matrix.txt", "w") as f:
             for num in elem.wtFrSol:
                 f.write(str(num*100) + "\n")
 
