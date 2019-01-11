@@ -29,21 +29,17 @@ def commandLineRun(args):
     runMain(ns.path, ns.main, float(ns.homog_dist))
 
 
-
-
-
-def runMain(filePath, mainFile, homog_dist):
-    """read in all exp files in specified directory and produce outputs to the user.
+def readFiles(filePath, mainFile):
+    """read in all exp files in specified directory, filling out variables.
 
     Arguments:
         filePath -- The path of the folder conaining necessary .exp files.  The folder must not contain any more
             .exp files than the ones used to run this tool.
         mainFile -- The file (in the directory 'path') that plots total mass fraction liquid against temperature
-        homog_dist -- the distance over which to homogenize, usually (1/2)*(SDAS)
     """
-
     # ---=== Parse data files ===---
 
+    # This section may better belong in the runMain function.  Time will tell.
     dataList = []
     liqData = ""
     for path in os.listdir(filePath):
@@ -91,6 +87,21 @@ def runMain(filePath, mainFile, homog_dist):
         # Duplicate item at position 0 to have some value for pre-solidification
         elem.wtFrSol.insert(0, elem.wtFrSol[0])
 
+
+
+def runMain(filePath, mainFile):
+    """read in all exp files in specified directory and produce outputs to the user.
+
+    Arguments:
+        filePath -- The path of the folder conaining necessary .exp files.  The folder must not contain any more
+            .exp files than the ones used to run this tool.
+        mainFile -- The file (in the directory 'path') that plots total mass fraction liquid against temperature
+        homog_dist -- the distance over which to homogenize, usually (1/2)*(SDAS)
+    """
+
+    # ---=== Parse data files ===---
+
+    readFiles(filePath, mainFile, homog_dist)
 
     # ---=== Output data ===---
 
