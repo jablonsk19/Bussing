@@ -6,19 +6,32 @@ import QtQuick.Controls 2.2
 ApplicationWindow {
     visible: true
     width: 600
-    height: 300
+    height: 638
     maximumWidth: 600
-    maximumHeight: 300
+    maximumHeight: 638
     minimumWidth: 600
-    minimumHeight: 300
+    minimumHeight: 638
     title: "HTA - GUI"
-    color: "#AAAAAA"
+
+    //color: "#AAAAAA"
+
+    Rectangle {
+        anchors.fill: parent
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: "#AAAACC" }
+            GradientStop { position: 1.0; color: "#6666AA" }
+        }
+    }
 
     ColumnLayout {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.margins: 9
+
+        Image {
+            source: "./HTA Logo.png"
+        }
 
         RowLayout {
             Text {

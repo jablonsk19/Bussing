@@ -1,5 +1,6 @@
 import data
 import os
+import shutil
 import sys
 import argparse
 import mainGui
@@ -94,16 +95,19 @@ def runMain(filePath, mainFile, homog_dist):
     # ---=== Output data ===---
 
     # output Matrix.dat (validated against previous versions' outputs)
-    # TODO maybe add an option to name output folder
-    if not os.path.isdir("./HTA Outputs"):
-        os.mkdir("./HTA Outputs")
-    with open("./HTA Outputs/Matrix.dat", "w") as f:
+    if os.path.isdir(filePath + "/HTA Outputs"):
+        shutil.rmtree(filePath + "/HTA Outputs")
+    try:
+        os.mkdir(filePath + "/HTA Outputs")
+    except OSError:
+        raise
+    with open(filePath + "/HTA Outputs/Matrix.dat", "w") as f:
         for num in liqData.wtFrLiq:
             f.write(str(num*homog_dist) + "\n")
 
     # output element-specific data files (percent solid against distance provided in Matrix.dat)
     for elem in dataList:
-        with open("./HTA Outputs/" + elem.element + "-matrix.txt", "w") as f:
+        with open(filePath + "/HTA Outputs/" + elem.element + "-matrix.txt", "w") as f:
             for num in elem.wtFrSol:
                 f.write(str(num*100) + "\n")
 

@@ -36,7 +36,11 @@ class Gui(QObject):
         arg1 = arg1[8:]
         arg2 = arg2[arg2.rfind("/") + 1:]
 
-        lines, solidus = hta.runMain(arg1, arg2, arg3)
+        try:
+            lines, solidus = hta.runMain(arg1, arg2, arg3)
+        except OSError as e:
+            self.runResult.emit("Error creating directory.  Perhaps the directory is protected?")
+            return
 
         self.runResult.emit("Outputs have been created.\nThere were {} lines and the solidus was {}.".format(lines, solidus))
 
