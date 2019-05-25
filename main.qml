@@ -48,7 +48,7 @@ ApplicationWindow {
             selectFolder: true
             nameFilters: ["DATAPLOT files (*.exp)"]
             title: "Please choose the working folder"
-            folder: "file:\\C:\\Users\\dterm\\PycharmProjects\\HTA\\Inno Demo Folder"
+            folder: "file:\\C:\\"
             onAccepted: {
                 console.log("You chose: " + expDialog.fileUrl)
             }

@@ -4,6 +4,9 @@ from PyQt5.QtQml import QQmlApplicationEngine
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
 import hta
 
+# not used directly but employed by the qml that is loaded
+from PyQt5 import QtQuick
+
 
 class Gui(QObject):
     def __init__(self):
