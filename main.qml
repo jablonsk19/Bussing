@@ -35,11 +35,13 @@ ApplicationWindow {
 
         RowLayout {
             Text {
-                text: qsTr("SDAS")
+                font.pointSize: 10
+                text: qsTr("SDAS (m)")
             }
 
             // Input field of the SDAS
             TextField {
+                font.pointSize: 10
                 id: sdas
                 implicitWidth: 200
             }
@@ -53,7 +55,7 @@ ApplicationWindow {
             Layout.columnSpan: 2
 
             onClicked: {
-                expDialog.visible = true
+                expDialog.open()
             }
         }
         FileDialog {
@@ -71,6 +73,7 @@ ApplicationWindow {
         }
 
         Text {
+            font.pointSize: 10
             id: expFilesText
             text: qsTr("No folder chosen.")
         }
@@ -92,18 +95,18 @@ ApplicationWindow {
             onClicked: {
                 if(expDialog.fileUrl == "")
                 {
-                    mainFileFirstError.visible = true
+                    mainFileFirstError.open()
                 } else {
                     console.log(expDialog.url)
-                    mainDialog.visible = true
+                    mainDialog.open()
                 }
             }
         }
         Popup {
             id: mainFileFirstError
-            x: 175
+            x: 150
             y: 100
-            width: 250
+            width: 300
             height: 100
             modal: true
             focus: true
@@ -112,6 +115,7 @@ ApplicationWindow {
             ColumnLayout {
                 anchors.fill: parent
                 Text {
+                    font.pointSize: 10
                     anchors.horizontalCenter: parent.center
                     text: qsTr("Please select a working folder first.")
                 }
@@ -149,6 +153,7 @@ ApplicationWindow {
         }
 
         Text {
+            font.pointSize: 10
             id: mainFileText
             text: qsTr("No file chosen.")
         }
@@ -173,12 +178,10 @@ ApplicationWindow {
             }
         }
 
-        Text {
-            text: qsTr("")
-        }
 
         // Here we see the result of run
         Text {
+            font.pointSize: 10
             id: runResult
         }
 

@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtGui import QGuiApplication
+from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
 import hta
@@ -45,7 +45,7 @@ class Gui(QObject):
         self.runResult.emit("Outputs have been created.\nThere were {} lines and the solidus was {}.".format(lines, solidus))
 
 def runGui():
-    app = QGuiApplication(sys.argv)
+    app = QApplication(sys.argv)
     engine = QQmlApplicationEngine()
     gui = Gui()
     # And register it in the context of QML

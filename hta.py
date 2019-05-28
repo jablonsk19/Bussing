@@ -102,7 +102,7 @@ def runMain(filePath, mainFile, homog_dist):
     except OSError:
         raise
     with open(filePath + "/HTA Outputs/Matrix.dat", "w") as f:
-        for num in liqData.wtFrLiq:
+        for num in reversed(liqData.wtFrLiq):
             f.write(str(num*homog_dist) + "\n")
 
     # output element-specific data files (percent solid against distance provided in Matrix.dat)
