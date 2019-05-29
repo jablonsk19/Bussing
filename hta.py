@@ -3,7 +3,7 @@ import os
 import shutil
 import sys
 import argparse
-import mainGui
+import tkinterGui
 
 def commandLineRun(args):
     """Perform a command-line version of HTA.
@@ -130,6 +130,6 @@ def runMain(filePath, mainFile, homog_dist):
 if __name__ == '__main__':
     # If no args, run gui, else run cli instance
     if len(sys.argv) == 1:
-        mainGui.runGui()
+        tkinterGui.runGui()
     else:
         commandLineRun(sys.argv)
