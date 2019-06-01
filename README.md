@@ -9,7 +9,7 @@ See https://github.com/jablonsk19/HTA/wiki/Installation for installation instruc
 **While using HTA is free, contribution is much appreciated and can now be done through Patreon: https://www.patreon.com/HTAssistant!**  The amount of support I receive will be an important factor in determining how much time and effort I will put into fixing bugs and adding features!
 
 # Report a Problem
-In an ideal world this section wouldn't need to exist, but if and when issues arise, click on [this link](https://github.com/jablonsk19/HTA/wiki/Report-a-problem)
+In an ideal world this section wouldn't need to exist, but if and when issues arise, click on [this link](https://github.com/jablonsk19/HTA/wiki/Report-a-problem).
 
 ## Sources
 (I've read multiple papers to better understand the problem so I could solve it.  There's nothing here now, but that will change soon.)
