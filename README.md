@@ -3,6 +3,7 @@ HTA aspires to be the tool of choice for metallurgists and researchers wishing t
 
 # Installation
 Note that HTA is relatively new, and like any software, there might be issues and bugs that haven't been discovered yet.  
+See https://github.com/jablonsk19/HTA/wiki/Installation for installation instructions.
 
 # Contribution
 **While using HTA is free, contribution is much appreciated and can now be done through Patreon: https://www.patreon.com/HTAssistant!**  The amount of support I receive will be an important factor in determining how much time and effort I will put into fixing bugs and adding features!
