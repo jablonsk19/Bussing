@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "HTA"
-!define PRODUCT_VERSION "0.2.2"
+!define PRODUCT_VERSION "0.3.0"
 !define PRODUCT_PUBLISHER "David Jablonski"
 !define PRODUCT_WEB_SITE "https://github.com/jablonsk19/HTA"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
